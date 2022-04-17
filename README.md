@@ -11,7 +11,6 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 ## Stack technique
 * [react v17](https://fr.reactjs.org/)
 * [react-admin](https://marmelab.com/react-admin/Tutorial.html)
-* [Dotenv](https://www.npmjs.com/package/dotenv)
 * [Ramda](https://ramdajs.com/)
 * [Slugify](https://www.npmjs.com/package/slugify)
 * [Jest](https://jestjs.io/fr/docs/getting-started)
