@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Vscode
+.vscode
+
+# PhpStorm
+.idea
+
+# Env
+.env.local
