@@ -1,14 +1,15 @@
 import {createContext} from "react";
-
+import medimoiProvider from "../../_config/medimoiProvider";
 const ApiContext = createContext({});
 
 const ApiProvider = ({children}) => {
-    const BaseApiUrl = process.env.API_BASE_URL;
+    const BaseApiUrl = process.env.REACT_APP_API_BASE_URL;
 
     return (
         <ApiContext.Provider
             value={{
-                BaseApiUrl
+                BaseApiUrl,
+                medimoiProvider
             }}
         >
             {children}
