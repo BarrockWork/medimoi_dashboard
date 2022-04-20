@@ -2,7 +2,15 @@ import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
 const apiUrl = process.env.REACT_APP_API_BASE_URL;
-const httpClient = fetchUtils.fetchJson;
+const httpClient = (url, options = {}) => {
+    if (!options.headers) {
+        options.headers = new Headers({ Accept: 'application/json' });
+    }
+    // const token = localStorage.getItem('token');
+    // options.headers.set('Authorization', `Bearer ${token}`);
+    return fetchUtils.fetchJson(url, options);
+}
+
 /**
  * @example
  *
@@ -19,19 +27,24 @@ export default {
         const { field, order } = params.sort;
         const query = {
             sort: JSON.stringify([field, order]),
-            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
+            range: JSON.stringify([(page - 1) * perPage, perPage]),
             filter: JSON.stringify(params.filter),
         };
+
         const url = `${apiUrl}/${resource}/all?${stringify(query)}`;
 
-        return httpClient(url).then(({ headers, json }) => ({
-            data: json,
-            total: json.length,
-        }));
-        // return httpClient(url).then(({ headers, json }) => ({
-        //     data: json,
-        //     total: parseInt(headers.get('content-range').split('/').pop(), 10),
-        // }));
+        return httpClient(url)
+            .then(({ headers, json }) => {
+                if (!headers.has('content-range')) {
+                throw new Error(
+                    'The content-range header is missing in the HTTP Response.'
+                );
+            }
+            return {
+                data:json,
+                total: parseInt(headers.get('content-range'), 10)
+            }
+        });
     },
 
     getOne: (resource, params) =>
