@@ -71,7 +71,7 @@ export default {
                 [params.target]: params.id,
             }),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `${apiUrl}/${resource}/by_reference?${stringify(query)}`;
 
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
