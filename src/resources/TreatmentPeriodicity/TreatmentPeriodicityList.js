@@ -5,7 +5,8 @@ import {
     DateField,
     BooleanField,
     EditButton,
-    DeleteButton
+    DeleteButton,
+    ShowButton
 } from 'react-admin';
 import * as React from "react";
 
@@ -18,9 +19,9 @@ export const TreatmentPeriodicityList = () => (
             <DateField label="Created at" source="createdAt" />
             <DateField label="Updated at" source="updatedAt" />
             <BooleanField source="isActive"/>
+            <ShowButton />
             <EditButton />
             <DeleteButton />
-
         </Datagrid>
     </List>
 );

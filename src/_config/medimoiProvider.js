@@ -2,10 +2,16 @@ import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
 const apiUrl = process.env.REACT_APP_API_BASE_URL;
+
+/**
+ * HttpClient (fetch)
+ * Tip: fetchUtils.fetchJson() is just a shortcut for fetch().then(r => r.json()), plus a control of the HTTP response code to throw an HTTPError in case of 4xx or 5xx response.
+ */
 const httpClient = (url, options = {}) => {
     if (!options.headers) {
         options.headers = new Headers({ Accept: 'application/json' });
     }
+    // It will be used later by the auth system
     // const token = localStorage.getItem('token');
     // options.headers.set('Authorization', `Bearer ${token}`);
     return fetchUtils.fetchJson(url, options);
@@ -17,8 +23,10 @@ const httpClient = (url, options = {}) => {
  * getList          => GET http://my.api.url/posts?_sort=title&_order=ASC&_start=0&_end=24
  * getOne           => GET http://my.api.url/posts/123
  * getManyReference => GET http://my.api.url/posts?author_id=345
+ * getMany        => GET http://my.api.url/posts?id=123&id=456&id=789
  * create           => POST http://my.api.url/posts/123
  * update           => PUT http://my.api.url/posts/123
+ * updateMany(Not configured)       => PUT http://my.api.url/posts/123, PUT http://my.api.url/posts/456, PUT http://my.api.url/posts/789
  * delete           => DELETE http://my.api.url/posts/123
  */
 export default {
@@ -54,9 +62,9 @@ export default {
 
     getMany: (resource, params) => {
         const query = {
-            filter: JSON.stringify({ ids: params.ids }),
+            filterMany: JSON.stringify({ id: params.ids }),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `${apiUrl}/${resource}/many?${stringify(query)}`;
         return httpClient(url).then(({ json }) => ({ data: json }));
     },
 
@@ -71,12 +79,22 @@ export default {
                 [params.target]: params.id,
             }),
         };
-        const url = `${apiUrl}/${resource}/by_reference?${stringify(query)}`;
 
-        return httpClient(url).then(({ headers, json }) => ({
-            data: json,
-            total: parseInt(headers.get('content-range'), 10)
-        }));
+        const url = `${apiUrl}/${resource}/all?${stringify(query)}`;
+
+        return httpClient(url)
+            .then(({ headers, json }) => {
+                if (!headers.has('content-range')) {
+                    throw new Error(
+                        'The content-range header is missing in the HTTP Response.'
+                    );
+                }
+                return {
+                    data:json,
+                    total: parseInt(headers.get('content-range'), 10)
+                }
+            });
+
     },
 
     update: (resource, params) =>
