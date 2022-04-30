@@ -9,6 +9,7 @@ import {
 // Ressources
 import medicalAdministrations from "./resources/MedicalAdministration"
 import treatments from "./resources/Treatment";
+import treatmentsDrugs from "./resources/TreatmentDrug";
 import treatmentPeriodicities from "./resources/TreatmentPeriodicity";
 // App
 const App = () => {
@@ -19,6 +20,8 @@ const App = () => {
             <Resource name="medical_administrations" {...medicalAdministrations}/>
             {/* Treatment CRUD*/}
             <Resource name="treatments" {...treatments}/>
+            {/* TreatmentDrud CRUD*/}
+            <Resource name="treatment_drugs" {...treatmentsDrugs}/>
             {/* TreatmentPeriodicity CRUD*/}
             <Resource name="treatment_periodicities" {...treatmentPeriodicities}/>
         </Admin>

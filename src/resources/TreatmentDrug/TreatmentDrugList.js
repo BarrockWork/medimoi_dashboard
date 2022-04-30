@@ -2,28 +2,26 @@ import {
     List,
     Datagrid,
     TextField,
-    DateField,
     BooleanField,
     EditButton,
     DeleteButton,
     ShowButton,
-    ReferenceField
+    ReferenceField,
+    RichTextField
 } from 'react-admin';
 import * as React from "react";
 
-export const TreatmentList = () => (
+export const TreatmentDrugList = () => (
     <List>
         <Datagrid>
             <TextField source="id" />
-            <TextField source="name" />
-            <ReferenceField label="User" source="user_id" reference="users">
-                <TextField source="email" />
-            </ReferenceField>
-            <ReferenceField label="Periodicity" source="treatment_periodicity_id" reference="treatment_periodicities">
+            <ReferenceField label="Treatment" source="treatment_id" reference="treatments">
                 <TextField source="name" />
             </ReferenceField>
-            <DateField source={"startedAt"} />
-            <DateField source={"finishedAt"} />
+            <ReferenceField label="Drug" source="drug_id" reference="drugs">
+                <TextField source="name" />
+            </ReferenceField>
+            <RichTextField source={"comments"} />
             <BooleanField source="isActive" />
             <ShowButton />
             <EditButton />
