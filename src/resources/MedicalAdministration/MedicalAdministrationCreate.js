@@ -1,7 +1,7 @@
 import {Create, SimpleForm, BooleanInput, TextInput, required} from 'react-admin';
 import * as React from "react";
 
-export const TreatmentPeriodicityCreate = () => (
+export const MedicalAdministrationCreate = () => (
     <Create>
         <SimpleForm>
             <TextInput source="name" validate={required()} />

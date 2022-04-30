@@ -22,7 +22,7 @@ export const TreatmentCreate = () => (
             </ReferenceInput>
             <DateTimeInput source={"startedAt"} validate={required()}/>
             <DateTimeInput source={"finishedAt"} />
-            <BooleanInput source="isActive" />
+            <BooleanInput source="isActive" defaultValue="true"/>
         </SimpleForm>
     </Create>
 );
