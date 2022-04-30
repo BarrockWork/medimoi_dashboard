@@ -15,6 +15,7 @@ Pour lancer le projet vous aurez besoin de la configuration suivante :
 * [Slugify](https://www.npmjs.com/package/slugify)
 * [Jest](https://jestjs.io/fr/docs/getting-started)
 * [mui/material](https://yarnpkg.com/package/@mui/material)
+* [ra-input-rich-text](https://yarnpkg.com/package/ra-input-rich-text)
 
 ## Pour initialiser le projet
 
