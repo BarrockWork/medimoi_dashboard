@@ -13,6 +13,7 @@ import Company from './resources/Company';
 import Contact from './resources/Contact';
 import ContactType from './resources/ContactType';
 import NotificationType from './resources/NotificationType';
+import UserCompany from './resources/UserCompany';
 
 // App
 const App = () => {
@@ -29,6 +30,8 @@ const App = () => {
       <Resource name='medical_administrations' {...medicalAdministrations} />
       {/* NotificationType CRUD */}
       <Resource name='notification_type' {...NotificationType} />
+      {/* UserCompany CRUD */}
+      <Resource name='user_company' {...UserCompany} />
       {/* Treatment CRUD*/}
       <Resource name='treatments' {...treatments} />
       {/* TreatmentDrud CRUD*/}
