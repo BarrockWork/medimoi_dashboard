@@ -10,13 +10,18 @@ import treatments from './resources/Treatment';
 import treatmentsDrugs from './resources/TreatmentDrug';
 import treatmentPeriodicities from './resources/TreatmentPeriodicity';
 import Company from './resources/Company';
+import Contact from './resources/Contact';
+import ContactType from './resources/ContactType';
 
 // App
 const App = () => {
   const { medimoiProvider } = useContext(ApiContext);
-  console.log(ApiContext);
   return (
     <Admin dashboard={Dashboard} dataProvider={medimoiProvider}>
+      {/* Contact CRUD */}
+      <Resource name='contact' {...Contact} />
+      {/* Contact CRUD */}
+      <Resource name='contact types' {...ContactType} />
       {/* Company CRUD */}
       <Resource name='company' {...Company} />
       {/* MedicalAdministration CRUD*/}
