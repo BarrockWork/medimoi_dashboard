@@ -21,7 +21,7 @@ const App = () => {
       {/* Contact CRUD */}
       <Resource name='contact' {...Contact} />
       {/* Contact CRUD */}
-      <Resource name='contact types' {...ContactType} />
+      <Resource name='contact_type' {...ContactType} />
       {/* Company CRUD */}
       <Resource name='company' {...Company} />
       {/* MedicalAdministration CRUD*/}

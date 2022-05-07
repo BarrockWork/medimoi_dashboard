@@ -6,7 +6,7 @@ import {
   SimpleForm,
   required,
   ReferenceInput,
-  SelectInput
+  SelectInput,
 } from 'react-admin';
 
 const ContactCreate = () => (
@@ -18,12 +18,12 @@ const ContactCreate = () => (
       <TextInput source='phoneNumber' validate={required()} />
       <ReferenceInput
         label='Contact Type'
-        source='ContactType.id'
+        source='contact_type_id'
         reference='contact_type'>
         <SelectInput optionText='name' validate={required()} />
       </ReferenceInput>
-      <ReferenceInput label='User' source='User.id' reference='user'>
-        <SelectInput optionText='name' validate={required()} />
+      <ReferenceInput label='User' source='user_id' reference='users'>
+        <SelectInput optionText='email' validate={required()} />
       </ReferenceInput>
       <BooleanInput source='isActive' />
     </SimpleForm>
