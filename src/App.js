@@ -12,6 +12,7 @@ import treatmentPeriodicities from './resources/TreatmentPeriodicity';
 import Company from './resources/Company';
 import Contact from './resources/Contact';
 import ContactType from './resources/ContactType';
+import NotificationType from './resources/NotificationType';
 
 // App
 const App = () => {
@@ -26,6 +27,8 @@ const App = () => {
       <Resource name='company' {...Company} />
       {/* MedicalAdministration CRUD*/}
       <Resource name='medical_administrations' {...medicalAdministrations} />
+      {/* NotificationType CRUD */}
+      <Resource name='notification_type' {...NotificationType} />
       {/* Treatment CRUD*/}
       <Resource name='treatments' {...treatments} />
       {/* TreatmentDrud CRUD*/}
