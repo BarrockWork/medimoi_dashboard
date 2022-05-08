@@ -15,21 +15,20 @@ export const DrugCreate = () => (
         <SimpleForm>
             <TextInput label="name" source='name' validate={required()}/>
 
-            <RichTextInput label="description" source={"description"}/>
+            <RichTextInput label="description" source={"description"} validate={required()}/>
 
             <ReferenceInput label="Drug Type" source="drug_type_id" reference="drug_types">
                 <SelectInput optionText="name" validate={required()}/>
             </ReferenceInput>
 
             <ReferenceInput label='Drug Level' source="drug_level_id" reference="drug_levels">
-                <SelectInput optionText="id" validate={required()}/>
+                <SelectInput optionText="level" validate={required()}/>
             </ReferenceInput>
 
             <ReferenceInput label='Medical Administration' source="medical_administration_id" reference="medical_administrations">
                 <SelectInput optionText="name" validate={required()}/>
             </ReferenceInput>
-            <BooleanInput source='isPrescription' defaultValue="false"/>
-            <BooleanInput label="Is active" source="isActive" defaultValue="true"/>
+            <BooleanInput source='isPrescription' defaultValue={false}/>
         </SimpleForm>
     </Create>
 )
