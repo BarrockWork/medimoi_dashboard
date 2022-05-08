@@ -17,10 +17,10 @@ import drugTypes from "./resources/DrugType";
 import drugLevels from "./resources/DrugLevel";
 import disease from "./resources/Disease";
 import diseaseTypes from "./resources/DiseaseType";
-
-
 import addressRoadType from "./resources/AddressRoadType";
 import userType from "./resources/UserType";
+import user from "./resources/User";
+import address from "./resources/Address";
 // App
 const App = () => {
     const {medimoiProvider} = useContext(ApiContext);
@@ -34,10 +34,6 @@ const App = () => {
             <Resource name="treatment_drugs" {...treatmentsDrugs}/>
             {/* TreatmentPeriodicity CRUD*/}
             <Resource name="treatment_periodicities" {...treatmentPeriodicities}/>
-            {/* UserType CRUD*/}
-            <Resource name="user_type" {...userType}/>
-            {/* AddressRoadType CRUD*/}
-            <Resource name="address_road_type" {...addressRoadType}/>
             {/* DrugType CRUD*/}
             <Resource name="drug_types" {...drugTypes}/>
             {/* Drug CRUD*/}
@@ -48,6 +44,14 @@ const App = () => {
             <Resource name="diseases" {...disease}/>
             {/* DiseaseType CRUD*/}
             <Resource name="disease_types" {...diseaseTypes}/>
+            {/* UserType CRUD*/}
+            <Resource name="user_type" {...userType}/>
+            {/* User CRUD*/}
+            <Resource name="users" {...user}/>
+            {/* Address CRUD*/}
+            <Resource name="address" {...address}/>
+            {/* AddressRoadType CRUD*/}
+            <Resource name="address_road_type" {...addressRoadType}/>
         </Admin>
     );
 }
