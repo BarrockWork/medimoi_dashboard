@@ -12,7 +12,6 @@ import treatments from "./resources/Treatment";
 import treatmentsDrugs from "./resources/TreatmentDrug";
 import treatmentPeriodicities from "./resources/TreatmentPeriodicity";
 
-// DrugType Resource
 import drugs from "./resources/Drug";
 import drugTypes from "./resources/DrugType";
 import drugLevels from "./resources/DrugLevel";
