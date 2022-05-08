@@ -11,6 +11,14 @@ import medicalAdministrations from "./resources/MedicalAdministration"
 import treatments from "./resources/Treatment";
 import treatmentsDrugs from "./resources/TreatmentDrug";
 import treatmentPeriodicities from "./resources/TreatmentPeriodicity";
+
+// DrugType Resource
+import drugs from "./resources/Drug";
+import drugTypes from "./resources/DrugType";
+import drugLevels from "./resources/DrugLevel";
+import disease from "./resources/Disease";
+import diseaseTypes from "./resources/DiseaseType";
+
 // App
 const App = () => {
     const {medimoiProvider} = useContext(ApiContext);
@@ -24,6 +32,16 @@ const App = () => {
             <Resource name="treatment_drugs" {...treatmentsDrugs}/>
             {/* TreatmentPeriodicity CRUD*/}
             <Resource name="treatment_periodicities" {...treatmentPeriodicities}/>
+            {/* DrugType CRUD*/}
+            <Resource name="drug_types" {...drugTypes}/>
+            {/* Drug CRUD*/}
+            <Resource name="drugs" {...drugs}/>
+            {/* DrugLevel CRUD*/}
+            <Resource name="drug_levels" {...drugLevels}/>
+            {/* Disease CRUD*/}
+            <Resource name="diseases" {...disease}/>
+            {/* DiseaseType CRUD*/}
+            <Resource name="disease_types" {...diseaseTypes}/>
         </Admin>
     );
 }
