@@ -1,4 +1,5 @@
-import {Create, SimpleForm, BooleanInput, TextInput, required, ReferenceInput, RichTextField, SelectInput} from 'react-admin';
+import {Create, SimpleForm, BooleanInput, TextInput, required, ReferenceInput, SelectInput} from 'react-admin';
+import { RichTextInput } from 'ra-input-rich-text';
 import * as React from "react";
 
 export const DiseaseCreate = () => (
@@ -8,8 +9,9 @@ export const DiseaseCreate = () => (
             <ReferenceInput source="disease_type_id" reference="disease_types" validate={required()}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            <RichTextField source="description" />
-            <BooleanInput source="isActive" defaultValue="true"/>
+            <RichTextInput label="description" source="description" validate={required()}/>
+            <TextInput label="Incubation period" source="incubationPeriod" />
+            <TextInput label="Transmitting" source="transmitting" />
         </SimpleForm>
     </Create>
 );

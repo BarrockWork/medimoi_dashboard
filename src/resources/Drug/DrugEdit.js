@@ -19,7 +19,7 @@ export const DrugEdit = () => (
             </ReferenceInput>
 
             <ReferenceInput label='Drug Level' source="drug_level_id" reference="drug_levels">
-                <SelectInput optionText="name" validate={required()}/>
+                <SelectInput optionText="level" validate={required()}/>
             </ReferenceInput>
 
             <ReferenceInput label='Medical Administration' source="medical_administration_id" reference="medical_administrations">
