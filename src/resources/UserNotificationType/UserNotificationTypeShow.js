@@ -11,8 +11,9 @@ export const UserNotificationTypeShow = () => (
     <Show>
         <SimpleShowLayout>
             <TextField source="id"/>
-            <TextField label="Prénom" source="user.firstName" />
-            <TextField label="Nom" source="user.lastName" />
+            <TextField label="Prénom" source="User.firstName" />
+            <TextField label="Nom" source="User.lastName" />
+            <TextField label="Type" source="NotificationType.name" />
             <DateField label="Created at" source="createdAt"/>
             <DateField label="Updated at" source="updatedAt"/>
             <BooleanField source="isActive"/>

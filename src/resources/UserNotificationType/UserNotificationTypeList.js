@@ -14,11 +14,13 @@ export const UserNotificationTypeList = () => (
     <List>
         <Datagrid>
             <TextField source="id"/>
-            <ReferenceField label="User" source="user_id" reference="users">
-                <TextField optionText="firstName" validate={required()}/>
-                <TextField optionText="lastName" validate={required()}/>
+            <ReferenceField label="Nom" source="user_id" reference="Users">
+                <TextField source="lastName" />
             </ReferenceField>
-            <ReferenceField label="Notification Type" source="notification_type_id" reference="notification_type">
+            <ReferenceField label="Prénom" source="user_id" reference="Users">
+                <TextField source="firstName" />
+            </ReferenceField>
+            <ReferenceField label="Type de notification" source="notification_type_id" reference="NotificationType">
                 <TextField source="name"/>
             </ReferenceField>
             <BooleanField source="isActive"/>

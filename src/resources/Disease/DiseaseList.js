@@ -19,8 +19,8 @@ export const DiseaseList = () => (
             <ReferenceField source="disease_type_id" reference='disease_types'>
                 <TextField source="name" />
             </ReferenceField>
-            <DateField source={"startedAt"} />
-            <DateField source={"finishedAt"} />
+            <DateField source="createdAt"/>
+            <DateField source="updatedAt"/>
             <BooleanField source="isActive" />
             <ShowButton />
             <EditButton />

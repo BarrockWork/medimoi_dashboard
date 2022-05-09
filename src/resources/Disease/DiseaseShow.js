@@ -1,14 +1,17 @@
 import * as React from "react";
-import {Show, SimpleShowLayout, TextField, DateField, BooleanField, ReferenceField} from 'react-admin';
+import {Show, SimpleShowLayout, TextField, DateField, BooleanField, ReferenceField, RichTextField} from 'react-admin';
 
 export const DiseaseShow = () => (
     <Show>
         <SimpleShowLayout>
             <TextField source="id" />
             <TextField source="name" />
-            <TextField source="DiseaseType.id" />
-            <DateField source={"startedAt"} />
-            <DateField source={"finishedAt"} />
+            <TextField label="Disease Type" source="DiseaseType.name" />
+            <RichTextField source="description" />
+            <TextField source="incubationPeriod" />
+            <TextField source="transmitting" />
+            <DateField source="createdAt" />
+            <DateField source="updatedAt" />
             <BooleanField source="isActive" />
         </SimpleShowLayout>
     </Show>
