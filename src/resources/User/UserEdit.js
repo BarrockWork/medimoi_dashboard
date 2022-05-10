@@ -6,7 +6,7 @@ import {
     SimpleForm,
     required,
     SelectInput,
-    NumberInput,
+    NumberInput, ReferenceInput,
 } from 'react-admin';
 
 
@@ -25,6 +25,10 @@ export const UserEdit = () => (
                 {id: 'admin', name: 'ADMIN'},
                 {id: 'super_admin', name: 'SUPER_ADMIN'},
             ]}/>
+            <ReferenceInput label="Type d'utilisateur" source="user_type_id"
+                            reference="user_type">
+                <SelectInput optionText="name" validate={required()}/>
+            </ReferenceInput>
             <BooleanInput source="isActive" defaultValue="true"/>
         </SimpleForm>
     </Edit>
