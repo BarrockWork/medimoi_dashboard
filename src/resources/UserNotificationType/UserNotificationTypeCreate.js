@@ -17,7 +17,6 @@ export const UserNotificationTypeCreate = () => (
             <ReferenceInput label="Type de notification" source="notification_type_id" reference="notification_type">
                 <SelectInput optionText="name" validate={required()}/>
             </ReferenceInput>
-            <BooleanInput source="isActive" defaultValue="true"/>
         </SimpleForm>
     </Create>
 );

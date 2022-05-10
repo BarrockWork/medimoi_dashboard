@@ -26,7 +26,7 @@ import userType from "./resources/UserType";
 import user from "./resources/User";
 import address from "./resources/Address";
 import userNotificationType from "./resources/UserNotificationType";
-
+import notificationHistory from "./resources/NotificationHistory";
 // App
 const App = () => {
     const {medimoiProvider} = useContext(ApiContext);
@@ -72,6 +72,8 @@ const App = () => {
             <Resource name="address_road_type" {...addressRoadType}/>
             {/* UserNotificationType CRUD*/}
             <Resource name="user_notification_type" {...userNotificationType}/>
+            {/* NotificationHistory CRUD*/}
+            <Resource name="notification_history" {...notificationHistory}/>
         </Admin>
     );
 };

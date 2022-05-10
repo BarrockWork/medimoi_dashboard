@@ -20,7 +20,7 @@ export const UserNotificationTypeList = () => (
             <ReferenceField label="Prénom" source="user_id" reference="Users">
                 <TextField source="firstName" />
             </ReferenceField>
-            <ReferenceField label="Type de notification" source="notification_type_id" reference="NotificationType">
+            <ReferenceField label="Type de notification" source="notification_type_id" reference="notification_type">
                 <TextField source="name"/>
             </ReferenceField>
             <BooleanField source="isActive"/>

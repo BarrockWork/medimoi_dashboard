@@ -8,7 +8,7 @@ export const UserNotificationTypeEdit = () => (
             <ReferenceInput label="User" source="User.id" reference="users" >
                 <SelectInput optionText="lastName" validate={required()}/>
             </ReferenceInput>
-            <ReferenceInput label="Type de notification" source="notification_type_id" reference="notification_types" >
+            <ReferenceInput label="Type de notification" source="notification_type_id" reference="notification_type" >
                 <SelectInput optionText="name" validate={required()}/>
             </ReferenceInput>        </SimpleForm>
     </Edit>
