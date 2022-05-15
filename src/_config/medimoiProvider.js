@@ -74,11 +74,17 @@ export default {
         const query = {
             sort: JSON.stringify([field, order]),
             range: JSON.stringify([(page - 1) * perPage, perPage]),
-            filter: JSON.stringify({
-                ...params.filter,
-                [params.target]: params.id,
-            }),
+            filter: JSON.stringify(params.filter)
         };
+
+        // const query = {
+        //     sort: JSON.stringify([field, order]),
+        //     range: JSON.stringify([(page - 1) * perPage, perPage]),
+        //     filter: JSON.stringify({
+        //         ...params.filter,
+        //         [params.target]: params.id,
+        //     }),
+        // };
 
         const url = `${apiUrl}/${resource}/all?${stringify(query)}`;
 
