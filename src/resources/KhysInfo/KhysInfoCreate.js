@@ -22,8 +22,8 @@ const KhysInfoCreate = () => (
         <SelectInput optionText='name' validate={required()} />
       </ReferenceInput>
       <NumberInput source='numberRoad' validate={required()} />
-      <TextInput source='streetname' validate={required()} />
-      <NumberInput source='zipCode' validate={required()} />
+      <TextInput source='streetName' validate={required()} />
+      <TextInput source='zipcode' validate={required()} />
       <TextInput source='city' validate={required()} />
       <TextInput source='region' validate={required()} />
       <TextInput source='country' validate={required()} />
