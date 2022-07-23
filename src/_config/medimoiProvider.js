@@ -114,7 +114,6 @@ export default {
                 body: JSON.stringify(params.data),
             }).then(({json}) => ({data: json}))
         }
-        console.log("Il y a des fichiers")
         // With files
         const paramEntries = Object.entries(params.data);
         let formData = new FormData();
