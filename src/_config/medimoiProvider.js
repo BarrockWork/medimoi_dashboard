@@ -103,11 +103,35 @@ export default {
 
     },
 
-    update: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`, {
+    update: (resource, params) => {
+        // Check if files entry exists
+        let isNotFiles = params.data.files !== undefined;//true or false
+
+        // Without files
+        if(!isNotFiles) {
+            return httpClient(`${apiUrl}/${resource}/${params.id}`, {
+                method: 'PUT',
+                body: JSON.stringify(params.data),
+            }).then(({json}) => ({data: json}))
+        }
+        console.log("Il y a des fichiers")
+        // With files
+        const paramEntries = Object.entries(params.data);
+        let formData = new FormData();
+        paramEntries.forEach((value => {
+            if(value[0] !== 'files') {
+                formData.append(value[0], value[1]);
+            } else {
+                value[1].forEach((dataFile, key) => {
+                    formData.append('files', dataFile.rawFile);
+                })
+            }
+        }))
+        return httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'PUT',
-            body: JSON.stringify(params.data),
-        }).then(({ json }) => ({ data: json })),
+            body: formData,
+        }).then(({json}) => ({data: json}))
+    },
 
     updateMany: (resource, params) => {
         const query = {
@@ -119,13 +143,38 @@ export default {
         }).then(({ json }) => ({ data: json }));
     },
 
-    create: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/new`, {
+    create: (resource, params) => {
+        // Check if files entry exists
+        let isNotFiles = params.data.files !== undefined;//true or false
+
+        // Without files
+        if(!isNotFiles) {
+            return httpClient(`${apiUrl}/${resource}/new`, {
+                method: 'POST',
+                body: JSON.stringify(params.data),
+            }).then(({json}) => ({
+                data: {...params.data, id: json.id},
+            }))
+        }
+        // With files
+        const paramEntries = Object.entries(params.data);
+        let formData = new FormData();
+        paramEntries.forEach((value => {
+            if(value[0] !== 'files') {
+                formData.append(value[0], value[1]);
+            } else {
+                value[1].forEach((dataFile, key) => {
+                    formData.append('files', dataFile.rawFile);
+                })
+            }
+        }))
+        return httpClient(`${apiUrl}/${resource}/new`, {
             method: 'POST',
-            body: JSON.stringify(params.data),
-        }).then(({ json }) => ({
-            data: { ...params.data, id: json.id },
-        })),
+            body: formData,
+        }).then(({json}) => ({
+            data: {...params.data, id: json.id},
+        }))
+    },
 
     delete: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
