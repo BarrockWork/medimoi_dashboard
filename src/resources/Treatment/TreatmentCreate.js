@@ -24,7 +24,7 @@ export const TreatmentCreate = () => (
             </ReferenceInput>
             <DateTimeInput source={"startedAt"} validate={required()}/>
             <DateTimeInput source={"finishedAt"} />
-            <BooleanInput source="isActive" defaultValue="true"/>
+            <BooleanInput source="isActive" defaultValue={true}/>
             <FileInput
                 source="files"
                 label="Importer des fichiers"
