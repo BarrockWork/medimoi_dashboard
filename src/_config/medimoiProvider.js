@@ -1,5 +1,6 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
+import jwtHandler from "./jwtHandler";
 
 const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
@@ -14,6 +15,10 @@ const httpClient = (url, options = {}) => {
     // It will be used later by the auth system
     // const token = localStorage.getItem('token');
     // options.headers.set('Authorization', `Bearer ${token}`);
+    const token = jwtHandler.getToken();
+    if (token) {
+        options.headers.set('Authorization', `Bearer ${token}`);
+    }
     return fetchUtils.fetchJson(url, options);
 }
 

@@ -11,7 +11,7 @@ export const OrderList = (props) => {
     const { order } = props;
 
     return (
-        <ListItem button component={Link} to={`/commands/${order.id}`}>
+        <ListItem key={`List_${order.id}`} button component={Link} to={`/commands/${order.id}`}>
             <ListItemText
                 primary={new Date(order.date).toLocaleString('fr-FR')}
                 secondary={`par ${order.user.firstName } ${order.user.lastName }`}

@@ -2,6 +2,8 @@ import './App.css';
 import { ApiContext } from './contexts';
 import { Admin, Resource } from 'react-admin';
 import { useContext } from 'react';
+import authProvider from "./_config/authProvider";
+
 // Components
 import { Dashboard } from './components';
 // Ressources
@@ -14,26 +16,24 @@ import medicalAdministrations from './resources/MedicalAdministration';
 import treatments from './resources/Treatment';
 import treatmentsDrugs from './resources/TreatmentDrug';
 import treatmentPeriodicities from './resources/TreatmentPeriodicity';
-
 import drugs from './resources/Drug';
 import drugTypes from './resources/DrugType';
 import drugLevels from './resources/DrugLevel';
 import disease from './resources/Disease';
 import diseaseTypes from './resources/DiseaseType';
-
 import addressRoadType from './resources/AddressRoadType';
 import userType from './resources/UserType';
 import user from './resources/User';
 import address from './resources/Address';
 import userNotificationType from './resources/UserNotificationType';
 import notificationHistory from './resources/NotificationHistory';
-
 import KhysInfo from './resources/KhysInfo';
+
 // App
 const App = () => {
   const { medimoiProvider } = useContext(ApiContext);
   return (
-    <Admin dashboard={Dashboard} dataProvider={medimoiProvider}>
+    <Admin authProvider={authProvider} dashboard={Dashboard} dataProvider={medimoiProvider} >
       {/* Khys Info CRUD */}
       <Resource name='khys_info' {...KhysInfo} />
       {/* Contact CRUD */}
