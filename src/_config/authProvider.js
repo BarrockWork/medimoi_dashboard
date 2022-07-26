@@ -17,7 +17,6 @@ const authProvider = {
                 return response.json();
             })
             .then(({ token, infoUser }) => {
-                console.log(infoUser.role);
                 if ( infoUser.role !== "ADMIN" && infoUser.role !== "SUPER_ADMIN") {
                     throw new Error('Vous n\'êtes pas habilité.');
                 } else {

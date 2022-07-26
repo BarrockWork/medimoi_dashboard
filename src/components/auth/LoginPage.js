@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
 import {
-    Avatar,
     Button,
     Card,
     CardActions,
     CircularProgress,
 } from '@mui/material';
-import LockIcon from '@mui/icons-material/Lock';
 import {
     Form,
     required,
@@ -20,7 +18,6 @@ import {
 } from 'react-admin';
 
 import Box from '@mui/material/Box';
-import {Image} from "@mui/icons-material";
 
 const LoginPage = () => {
     const [loading, setLoading] = useState(false);
