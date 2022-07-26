@@ -20,7 +20,7 @@ export const TreatmentEdit = () => (
             <ReferenceInput label="User" source="User.id" reference="users" >
                 <SelectInput optionText="email" validate={required()}/>
             </ReferenceInput>
-            <ReferenceInput label="Periodicity" source="TreatmentPeriodicity.id" reference="treatment_periodicities" >
+            <ReferenceInput label="Periodicity" source="treatment_periodicity.id" reference="treatment_periodicities" >
                 <SelectInput optionText="name" validate={required()}/>
             </ReferenceInput>
             <DateTimeInput source={"startedAt"} validate={required()}/>

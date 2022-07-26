@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Show, SimpleShowLayout, TextField, DateField, BooleanField, ReferenceField} from 'react-admin';
+import {Show, SimpleShowLayout, TextField, DateField, BooleanField, ReferenceField, FileField} from 'react-admin';
 
 export const TreatmentShow = () => (
     <Show>
@@ -11,6 +11,7 @@ export const TreatmentShow = () => (
             <DateField source={"startedAt"} />
             <DateField source={"finishedAt"} />
             <BooleanField source="isActive" />
+            <FileField label="Liste des fichiers" source="TreatmentMedias" title="originalName"/>
         </SimpleShowLayout>
     </Show>
 );

@@ -26,7 +26,7 @@ export const TreatmentList = () => (
             <DateField source={"finishedAt"} />
             <BooleanField source="isActive" />
             <ShowButton />
-            <EditButton />
+            {/*<EditButton />*/}
             <DeleteButton />
         </Datagrid>
     </List>
