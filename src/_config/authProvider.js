@@ -16,11 +16,24 @@ const authProvider = {
                 }
                 return response.json();
             })
-            .then(({ token }) => jwtHandler.setToken(token));
+            .then(({ token, infoUser }) => {
+                console.log(infoUser.role);
+                if ( infoUser.role !== "ADMIN" && infoUser.role !== "SUPER_ADMIN") {
+                    throw new Error('Vous n\'êtes pas habilité.');
+                } else {
+                    //Save token in memory
+                    jwtHandler.setToken(token)
+                    //Save permissions
+                    localStorage.setItem('permissions', infoUser.role);
+                }
+            });
     },
     // remove local credentials and notify the auth server that the user logged out
     logout: () => {
+        //Delete token in memory
         jwtHandler.ereaseToken();
+        // Delete permissions
+        localStorage.removeItem('permissions');
         return Promise.resolve();
     },
     // when the dataProvider returns an error, check if this is an authentication error
@@ -42,7 +55,8 @@ const authProvider = {
     },
     // get the user permissions (optional)
     getPermissions: () => {
-        return jwtHandler.getToken() ? Promise.resolve() : Promise.reject();
+        const role = localStorage.getItem('permissions');
+        return role ? Promise.resolve(role) : Promise.reject();
     },
 };
 

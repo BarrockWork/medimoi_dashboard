@@ -6,6 +6,8 @@ import authProvider from "./_config/authProvider";
 
 // Components
 import { Dashboard } from './components';
+import LoginPage from "./components/auth/LoginPage";
+
 // Ressources
 import Company from './resources/Company';
 import Contact from './resources/Contact';
@@ -31,55 +33,64 @@ import KhysInfo from './resources/KhysInfo';
 
 // App
 const App = () => {
-  const { medimoiProvider } = useContext(ApiContext);
-  return (
-    <Admin authProvider={authProvider} dashboard={Dashboard} dataProvider={medimoiProvider} >
-      {/* Khys Info CRUD */}
-      <Resource name='khys_info' {...KhysInfo} />
-      {/* Contact CRUD */}
-      <Resource name='contact' {...Contact} />
-      {/* Contact Type CRUD */}
-      <Resource name='contact_type' {...ContactType} />
-      {/* Company CRUD */}
-      <Resource name='company' {...Company} />
-      {/* MedicalAdministration CRUD*/}
-      <Resource name='medical_administrations' {...medicalAdministrations} />
-      {/* NotificationType CRUD */}
-      <Resource name='notification_type' {...NotificationType} />
-      {/* UserCompany CRUD */}
-      <Resource name='user_company' {...UserCompany} />
-      {/* TreatmentDrud CRUD*/}
-      <Resource name='treatment_drugs' {...treatmentsDrugs} />
-      {/* TreatmentPeriodicity CRUD*/}
-      <Resource name='treatment_periodicities' {...treatmentPeriodicities} />
-      {/* MedicalAdministration CRUD*/}
-      <Resource name='medical_administrations' {...medicalAdministrations} />
-      {/* Treatment CRUD*/}
-      <Resource name='treatments' {...treatments} />
-      {/* DrugType CRUD*/}
-      <Resource name='drug_types' {...drugTypes} />
-      {/* Drug CRUD*/}
-      <Resource name='drugs' {...drugs} />
-      {/* DrugLevel CRUD*/}
-      <Resource name='drug_levels' {...drugLevels} />
-      {/* Disease CRUD*/}
-      <Resource name='diseases' {...disease} />
-      {/* DiseaseType CRUD*/}
-      <Resource name='disease_types' {...diseaseTypes} />
-      {/* UserType CRUD*/}
-      <Resource name='user_type' {...userType} />
-      {/* User CRUD*/}
-      <Resource name='users' {...user} />
-      {/* Address CRUD*/}
-      <Resource name='address' {...address} />
-      {/* AddressRoadType CRUD*/}
-      <Resource name='address_road_type' {...addressRoadType} />
-      {/* UserNotificationType CRUD*/}
-      <Resource name='user_notification_type' {...userNotificationType} />
-      {/* NotificationHistory CRUD*/}
-      <Resource name='notification_history' {...notificationHistory} />
-    </Admin>
-  );
+    const { medimoiProvider } = useContext(ApiContext);
+    return (
+        <Admin
+            authProvider={authProvider}
+            dashboard={Dashboard}
+            dataProvider={medimoiProvider}
+            loginPage={LoginPage}
+        >
+            {permissions => (
+                <>
+                    {/* Khys Info CRUD */}
+                    {permissions === 'SUPER_ADMIN' ? <Resource name='khys_info' {...KhysInfo} /> : null}
+                    {/* Contact CRUD */}
+                    <Resource name='contact' {...Contact} />
+                    {/* Contact Type CRUD */}
+                    <Resource name='contact_type' {...ContactType} />
+                    {/* Company CRUD */}
+                    <Resource name='company' {...Company} />
+                    {/* MedicalAdministration CRUD*/}
+                    <Resource name='medical_administrations' {...medicalAdministrations} />
+                    {/* NotificationType CRUD */}
+                    <Resource name='notification_type' {...NotificationType} />
+                    {/* UserCompany CRUD */}
+                    <Resource name='user_company' {...UserCompany} />
+                    {/* TreatmentDrud CRUD*/}
+                    <Resource name='treatment_drugs' {...treatmentsDrugs} />
+                    {/* TreatmentPeriodicity CRUD*/}
+                    <Resource name='treatment_periodicities' {...treatmentPeriodicities} />
+                    {/* MedicalAdministration CRUD*/}
+                    <Resource name='medical_administrations' {...medicalAdministrations} />
+                    {/* Treatment CRUD*/}
+                    <Resource name='treatments' {...treatments} />
+                    {/* DrugType CRUD*/}
+                    <Resource name='drug_types' {...drugTypes} />
+                    {/* Drug CRUD*/}
+                    <Resource name='drugs' {...drugs} />
+                    {/* DrugLevel CRUD*/}
+                    <Resource name='drug_levels' {...drugLevels} />
+                    {/* Disease CRUD*/}
+                    <Resource name='diseases' {...disease} />
+                    {/* DiseaseType CRUD*/}
+                    <Resource name='disease_types' {...diseaseTypes} />
+                    {/* UserType CRUD*/}
+                    <Resource name='user_type' {...userType} />
+                    {/* User CRUD*/}
+                    <Resource name='users' {...user} />
+                    {/* Address CRUD*/}
+                    <Resource name='address' {...address} />
+                    {/* AddressRoadType CRUD*/}
+                    <Resource name='address_road_type' {...addressRoadType} />
+                    {/* UserNotificationType CRUD*/}
+                    <Resource name='user_notification_type' {...userNotificationType} />
+                    {/* NotificationHistory CRUD*/}
+                    <Resource name='notification_history' {...notificationHistory} />
+                </>
+            )}
+        </Admin>
+    );
 };
 
 export default App;
