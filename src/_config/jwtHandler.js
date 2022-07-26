@@ -2,15 +2,19 @@
 const jwtHandler = () => {
     let inMemoryJWT = null;
 
-    const getToken = () => inMemoryJWT;
+    const getToken = () => {
+        return inMemoryJWT ? inMemoryJWT : localStorage.getItem('dash_tok');
+    };
 
     const setToken = (token) => {
         inMemoryJWT = token;
+        localStorage.setItem('dash_tok', token);
         return true;
     };
 
     const ereaseToken = () => {
         inMemoryJWT = null;
+        localStorage.removeItem('dash_tok');
         return true;
     }
 

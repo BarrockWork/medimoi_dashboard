@@ -46,7 +46,14 @@ const authProvider = {
     },
     // when the user navigates, make sure that their credentials are still valid
     checkAuth: () => {
-        return jwtHandler.getToken() ? Promise.resolve() : Promise.reject();
+        // return jwtHandler.getToken() ? Promise.resolve() : Promise.reject();
+       const dashToken = jwtHandler.getToken();
+       if(dashToken) {
+           return Promise.resolve();
+       } else {
+           return Promise.reject();
+       }
+
     },
     // get the user's profile
     getIdentity: () => {
