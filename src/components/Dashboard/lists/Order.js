@@ -13,8 +13,8 @@ export const OrderList = (props) => {
     return (
         <ListItem key={`List_${order.id}`} button component={Link} to={`/commands/${order.id}`}>
             <ListItemText
-                primary={new Date(order.date).toLocaleString('fr-FR')}
-                secondary={`par ${order.user.firstName } ${order.user.lastName }`}
+                primary={new Date(order.billing_date).toLocaleString('fr-FR')}
+                secondary={`par ${order.User.firstName } ${order.User.lastName }`}
             />
             <ListItemSecondaryAction>
                 <Box
@@ -24,7 +24,7 @@ export const OrderList = (props) => {
                         color: 'text.primary',
                     }}
                 >
-                    {order.total}&euro;
+                    {order.Plan.price}&euro;
                 </Box>
             </ListItemSecondaryAction>
         </ListItem>

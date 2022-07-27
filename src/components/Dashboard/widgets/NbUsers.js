@@ -11,7 +11,7 @@ const NbUsers = (props) => {
         return await apiAxios.get('/users/count/true')
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         getNbUsers().then(r => setNbUser(r.data));
     }, [])
     return (
