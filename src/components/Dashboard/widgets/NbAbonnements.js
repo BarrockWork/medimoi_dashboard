@@ -7,13 +7,13 @@ import apiAxios from '../../../_config/axios';
 
 
 const NbAbonnements = (props) => {
-    const [nbAbo, setNbAbo] = React.useState("--")
+    const [nbAbo, setNbAbo] = useState("--")
 
     const getNbAbos = async () => {
         return await apiAxios.get("/user_plans/count/true")
     }
     
-    React.useEffect(()=>{
+    useEffect(()=>{
         getNbAbos().then(response => setNbAbo(response.data))
     },[])
 
