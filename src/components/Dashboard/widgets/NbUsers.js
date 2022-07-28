@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {Person} from '@mui/icons-material'
 import apiAxios from "../../../_config/axios";
 import CardWithIcon from './CardWithIcon';
@@ -11,7 +10,7 @@ const NbUsers = (props) => {
         return await apiAxios.get('/users/count/true')
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         getNbUsers().then(r => setNbUser(r.data));
     }, [])
     return (
